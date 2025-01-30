@@ -1,0 +1,48 @@
+!SESSION 2025-01-30 00:47:38.872 -----------------------------------------------
+eclipse.buildId=Version 1.16.1
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_AU
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -data C:\Users\wongr\My Stuff\UNSW\Sunswift\projects
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-01-30 00:47:47.565
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-01-30 00:47:47.578
+!MESSAGE Log4j2 initialized with config file C:\Users\wongr\My Stuff\UNSW\Sunswift\projects\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-01-30 00:47:52.542
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2025-01-30 02:02:43.035 -----------------------------------------------
+eclipse.buildId=Version 1.16.1
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_AU
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-01-30 02:02:50.295
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-01-30 02:02:50.295
+!MESSAGE Log4j2 initialized with config file C:\Users\wongr\My Stuff\UNSW\Sunswift\projects\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-01-30 02:02:56.436
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-01-30 02:30:00.480
+!MESSAGE Indexed 'test_blink_led' (19 sources, 81 headers) in 3.16 sec: 4,748 declarations; 19,315 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0083%)
+!SESSION 2025-01-30 17:09:47.519 -----------------------------------------------
+eclipse.buildId=Version 1.16.1
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_AU
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-01-30 17:10:24.532
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-01-30 17:10:24.539
+!MESSAGE Log4j2 initialized with config file C:\Users\wongr\My Stuff\UNSW\Sunswift\projects\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-01-30 17:10:32.971
+!MESSAGE Started RMI Server, listening on port 41337

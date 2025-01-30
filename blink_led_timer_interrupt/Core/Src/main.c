@@ -98,7 +98,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+	// nothing cuz everything in interrupt
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -218,7 +218,11 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+// TIM2 callback function toggle LED
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *tim)
+{
+	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+}
 /* USER CODE END 4 */
 
 /**

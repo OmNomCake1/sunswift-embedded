@@ -1,20 +1,20 @@
 /**
-  ******************************************************************************
-  * @file    stm32g4xx_hal_dma_ex.h
-  * @author  MCD Application Team
-  * @brief   Header file of DMA HAL extension module.
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2019 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file    stm32g4xx_hal_dma_ex.h
+ * @author  MCD Application Team
+ * @brief   Header file of DMA HAL extension module.
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2019 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __STM32G4xx_HAL_DMA_EX_H
@@ -28,76 +28,70 @@ extern "C" {
 #include "stm32g4xx_hal_def.h"
 
 /** @addtogroup STM32G4xx_HAL_Driver
-  * @{
-  */
+ * @{
+ */
 
 /** @addtogroup DMAEx
-  * @{
-  */
+ * @{
+ */
 
 /* Exported types ------------------------------------------------------------*/
 /** @defgroup DMAEx_Exported_Types DMAEx Exported Types
-  * @{
-  */
+ * @{
+ */
 
 /**
-  * @brief  HAL DMA Synchro definition
-  */
-
+ * @brief  HAL DMA Synchro definition
+ */
 
 /**
-  * @brief  HAL DMAMUX Synchronization configuration structure definition
-  */
-typedef struct
-{
-  uint32_t SyncSignalID;  /*!< Specifies the synchronization signal gating the DMA request in periodic mode.
-                              This parameter can be a value of @ref DMAEx_DMAMUX_SyncSignalID_selection */
+ * @brief  HAL DMAMUX Synchronization configuration structure definition
+ */
+typedef struct {
+	uint32_t SyncSignalID; /*!< Specifies the synchronization signal gating the DMA request in periodic mode.
+	 This parameter can be a value of @ref DMAEx_DMAMUX_SyncSignalID_selection */
 
-  uint32_t SyncPolarity;  /*!< Specifies the polarity of the signal on which the DMA request is synchronized.
-                              This parameter can be a value of @ref DMAEx_DMAMUX_SyncPolarity_selection */
+	uint32_t SyncPolarity; /*!< Specifies the polarity of the signal on which the DMA request is synchronized.
+	 This parameter can be a value of @ref DMAEx_DMAMUX_SyncPolarity_selection */
 
-  FunctionalState SyncEnable;  /*!< Specifies if the synchronization shall be enabled or disabled
-                                    This parameter can take the value ENABLE or DISABLE*/
+	FunctionalState SyncEnable; /*!< Specifies if the synchronization shall be enabled or disabled
+	 This parameter can take the value ENABLE or DISABLE*/
 
+	FunctionalState EventEnable; /*!< Specifies if an event shall be generated once the RequestNumber is reached.
+	 This parameter can take the value ENABLE or DISABLE */
 
-  FunctionalState EventEnable;    /*!< Specifies if an event shall be generated once the RequestNumber is reached.
-                                       This parameter can take the value ENABLE or DISABLE */
-
-  uint32_t RequestNumber; /*!< Specifies the number of DMA request that will be authorized after a sync event
-                               This parameter must be a number between Min_Data = 1 and Max_Data = 32 */
-
+	uint32_t RequestNumber; /*!< Specifies the number of DMA request that will be authorized after a sync event
+	 This parameter must be a number between Min_Data = 1 and Max_Data = 32 */
 
 } HAL_DMA_MuxSyncConfigTypeDef;
 
-
 /**
-  * @brief  HAL DMAMUX request generator parameters structure definition
-  */
-typedef struct
-{
-  uint32_t SignalID;      /*!< Specifies the ID of the signal used for DMAMUX request generator
-                              This parameter can be a value of @ref DMAEx_DMAMUX_SignalGeneratorID_selection */
+ * @brief  HAL DMAMUX request generator parameters structure definition
+ */
+typedef struct {
+	uint32_t SignalID; /*!< Specifies the ID of the signal used for DMAMUX request generator
+	 This parameter can be a value of @ref DMAEx_DMAMUX_SignalGeneratorID_selection */
 
-  uint32_t Polarity;       /*!< Specifies the polarity of the signal on which the request is generated.
-                             This parameter can be a value of @ref DMAEx_DMAMUX_RequestGeneneratorPolarity_selection */
+	uint32_t Polarity; /*!< Specifies the polarity of the signal on which the request is generated.
+	 This parameter can be a value of @ref DMAEx_DMAMUX_RequestGeneneratorPolarity_selection */
 
-  uint32_t RequestNumber;  /*!< Specifies the number of DMA request that will be generated after a signal event
-                                This parameter must be a number between Min_Data = 1 and Max_Data = 32 */
+	uint32_t RequestNumber; /*!< Specifies the number of DMA request that will be generated after a signal event
+	 This parameter must be a number between Min_Data = 1 and Max_Data = 32 */
 
 } HAL_DMA_MuxRequestGeneratorConfigTypeDef;
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /* Exported constants --------------------------------------------------------*/
 /** @defgroup DMAEx_Exported_Constants DMAEx Exported Constants
-  * @{
-  */
+ * @{
+ */
 
 /** @defgroup DMAEx_DMAMUX_SyncSignalID_selection DMAMUX SyncSignalID selection
-  * @{
-  */
+ * @{
+ */
 #define HAL_DMAMUX1_SYNC_EXTI0                      0U     /*!<  Synchronization Signal is EXTI0  IT   */
 #define HAL_DMAMUX1_SYNC_EXTI1                      1U     /*!<  Synchronization Signal is EXTI1  IT   */
 #define HAL_DMAMUX1_SYNC_EXTI2                      2U     /*!<  Synchronization Signal is EXTI2  IT   */
@@ -121,24 +115,24 @@ typedef struct
 #define HAL_DMAMUX1_SYNC_LPTIM1_OUT                20U     /*!<  Synchronization Signal is LPTIM1 OUT */
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /** @defgroup DMAEx_DMAMUX_SyncPolarity_selection DMAMUX SyncPolarity selection
-  * @{
-  */
+ * @{
+ */
 #define HAL_DMAMUX_SYNC_NO_EVENT                               0U    /*!< block synchronization events        */
 #define HAL_DMAMUX_SYNC_RISING     ((uint32_t)DMAMUX_CxCR_SPOL_0)    /*!< synchronize with rising edge events */
 #define HAL_DMAMUX_SYNC_FALLING    ((uint32_t)DMAMUX_CxCR_SPOL_1)    /*!< synchronize with falling edge events */
 #define HAL_DMAMUX_SYNC_RISING_FALLING ((uint32_t)DMAMUX_CxCR_SPOL)  /*!< synchronize with rising and falling edge events */
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /** @defgroup DMAEx_DMAMUX_SignalGeneratorID_selection DMAMUX SignalGeneratorID selection
-  * @{
-  */
+ * @{
+ */
 #define HAL_DMAMUX1_REQ_GEN_EXTI0                0U        /*!< Request generator Signal is EXTI0 IT    */
 #define HAL_DMAMUX1_REQ_GEN_EXTI1                1U        /*!< Request generator Signal is EXTI1 IT    */
 #define HAL_DMAMUX1_REQ_GEN_EXTI2                2U        /*!< Request generator Signal is EXTI2 IT    */
@@ -162,63 +156,64 @@ typedef struct
 #define HAL_DMAMUX1_REQ_GEN_LPTIM1_OUT          20U        /*!< Request generator Signal is LPTIM1 OUT  */
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /** @defgroup DMAEx_DMAMUX_RequestGeneneratorPolarity_selection DMAMUX RequestGeneneratorPolarity selection
-  * @{
-  */
+ * @{
+ */
 #define HAL_DMAMUX_REQ_GEN_NO_EVENT         0x00000000U           /*!< block request generator events        */
 #define HAL_DMAMUX_REQ_GEN_RISING           DMAMUX_RGxCR_GPOL_0   /*!< generate request on rising edge events */
 #define HAL_DMAMUX_REQ_GEN_FALLING          DMAMUX_RGxCR_GPOL_1   /*!< generate request on falling edge events */
 #define HAL_DMAMUX_REQ_GEN_RISING_FALLING   DMAMUX_RGxCR_GPOL     /*!< generate request on rising and falling edge events */
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /* Exported macro ------------------------------------------------------------*/
 
 /* Exported functions --------------------------------------------------------*/
 /** @addtogroup DMAEx_Exported_Functions
-  * @{
-  */
+ * @{
+ */
 
 /* IO operation functions *****************************************************/
 /** @addtogroup DMAEx_Exported_Functions_Group1
-  * @{
-  */
+ * @{
+ */
 
 /* ------------------------- REQUEST -----------------------------------------*/
 HAL_StatusTypeDef HAL_DMAEx_ConfigMuxRequestGenerator(DMA_HandleTypeDef *hdma,
-                                                      HAL_DMA_MuxRequestGeneratorConfigTypeDef *pRequestGeneratorConfig);
+		HAL_DMA_MuxRequestGeneratorConfigTypeDef *pRequestGeneratorConfig);
 HAL_StatusTypeDef HAL_DMAEx_EnableMuxRequestGenerator(DMA_HandleTypeDef *hdma);
 HAL_StatusTypeDef HAL_DMAEx_DisableMuxRequestGenerator(DMA_HandleTypeDef *hdma);
 /* -------------------------------------------------------------------------- */
 
 /* ------------------------- SYNCHRO -----------------------------------------*/
-HAL_StatusTypeDef HAL_DMAEx_ConfigMuxSync(DMA_HandleTypeDef *hdma, HAL_DMA_MuxSyncConfigTypeDef *pSyncConfig);
+HAL_StatusTypeDef HAL_DMAEx_ConfigMuxSync(DMA_HandleTypeDef *hdma,
+		HAL_DMA_MuxSyncConfigTypeDef *pSyncConfig);
 /* -------------------------------------------------------------------------- */
 
 void HAL_DMAEx_MUX_IRQHandler(DMA_HandleTypeDef *hdma);
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /* Private macros ------------------------------------------------------------*/
 /** @defgroup DMAEx_Private_Macros DMAEx Private Macros
-  * @brief    DMAEx private macros
-  * @{
-  */
+ * @brief    DMAEx private macros
+ * @{
+ */
 
 #define IS_DMAMUX_SYNC_SIGNAL_ID(SIGNAL_ID) ((SIGNAL_ID) <= HAL_DMAMUX1_SYNC_LPTIM1_OUT)
 
@@ -244,17 +239,16 @@ void HAL_DMAEx_MUX_IRQHandler(DMA_HandleTypeDef *hdma);
                                                   ((POLARITY) == HAL_DMAMUX_REQ_GEN_RISING_FALLING))
 
 /**
-  * @}
-  */
-
-
-/**
-  * @}
-  */
+ * @}
+ */
 
 /**
-  * @}
-  */
+ * @}
+ */
+
+/**
+ * @}
+ */
 
 #ifdef __cplusplus
 }

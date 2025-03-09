@@ -1,0 +1,10 @@
+01:29:48 **** Incremental Build of configuration Debug for project blink_led_pwm ****
+make -j16 all 
+arm-none-eabi-size  blink_led_pwm.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4664	     12	   1572	   6248	   1868	blink_led_pwm.elf
+Finished building: default.size.stdout
+ 
+
+01:29:49 Build Finished. 0 errors, 0 warnings. (took 398ms)
+

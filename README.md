@@ -1,2 +1,2 @@
 # Sunswift Test Repository
-Code in preparation for Sunswift. Includes embedded stm32g4 code.
+Code for Sunswift testing. Includes embedded STM32G431C8T6 code.

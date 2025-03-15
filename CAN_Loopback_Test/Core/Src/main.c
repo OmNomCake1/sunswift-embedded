@@ -21,7 +21,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -51,7 +53,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_FDCAN1_Init(void);
 /* USER CODE BEGIN PFP */
-void send_FDCAN(char data[], FDCAN_TxHeaderTypeDef Txheader);
+void send_FDCAN(uint8_t* data, FDCAN_TxHeaderTypeDef* TxHeader);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -90,11 +92,12 @@ int main(void)
   MX_GPIO_Init();
   MX_FDCAN1_Init();
   /* USER CODE BEGIN 2 */
+  // start FD CAN and enable interrupt
   HAL_FDCAN_Start(&hfdcan1);
+  HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
 
-  FDCAN_TxHeaderTypeDef Txheader;
-  // 6 byte message
-  char data[6] = "hello";
+  FDCAN_TxHeaderTypeDef TxHeader;
+  uint8_t TxData = 0x08;
 
   /* USER CODE END 2 */
 
@@ -103,9 +106,9 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  send_FDCAN(data, Txheader);
-	  HAL_Delay(1000);
     /* USER CODE BEGIN 3 */
+	  send_FDCAN(&TxData, &TxHeader);
+	  HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }
@@ -211,21 +214,37 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-void send_FDCAN(char data[], FDCAN_TxHeaderTypeDef TxHeader) {
-	TxHeader.Identifier = 0x001;
-	TxHeader.IdType = FDCAN_STANDARD_ID;
-	TxHeader.TxFrameType = FDCAN_DATA_FRAME;
-	TxHeader.DataLength = FDCAN_DLC_BYTES_6;
-	TxHeader.BitRateSwitch = FDCAN_BRS_OFF;
-	TxHeader.FDFormat = FDCAN_FD_CAN;
-	TxHeader.TxEventFifoControl = FDCAN_NO_TX_EVENTS;
-	TxHeader.MessageMarker = 0;
+// send over FD CAN given message, fills out header
+void send_FDCAN(uint8_t* data, FDCAN_TxHeaderTypeDef* TxHeader) {
+	TxHeader->Identifier = 0x001;
+	TxHeader->IdType = FDCAN_STANDARD_ID;
+	TxHeader->TxFrameType = FDCAN_DATA_FRAME;
+	TxHeader->DataLength = FDCAN_DLC_BYTES_1;
+	TxHeader->BitRateSwitch = FDCAN_BRS_OFF;
+	TxHeader->FDFormat = FDCAN_FD_CAN;
+	TxHeader->TxEventFifoControl = FDCAN_NO_TX_EVENTS;
+	TxHeader->MessageMarker = 0;
 
-	if (HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan1, &TxHeader, data) != HAL_OK) {
+	if (HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan1, TxHeader, data) != HAL_OK) {
 		printf("CAN send error\n");
 		fflush(stdout);
 	}
 
+}
+
+// FD CAN FIFO0 callback
+void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs) {
+	FDCAN_RxHeaderTypeDef RxHeader;
+	uint8_t RxData;
+
+	// read message from fifo 0
+	if (HAL_FDCAN_GetRxMessage(&hfdcan1, FDCAN_RX_FIFO0, &RxHeader, &RxData) != HAL_OK) {
+		printf("Error receiving CAN message\n");
+		fflush(stdout);
+	}
+
+	// print values
+	printf("Received from CAN ID: 0x%lX\n Data: %u\n", RxHeader.Identifier, RxData);
 }
 /* USER CODE END 4 */
 

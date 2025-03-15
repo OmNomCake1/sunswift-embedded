@@ -1,56 +1,84 @@
-13:57:00 **** Incremental Build of configuration Debug for project ITM_Viewer_Test ****
-make -j16 all 
-arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/syscalls.o"
-arm-none-eabi-gcc -o "ITM_Viewer_Test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\wongr\My Stuff\UNSW\Sunswift\projects\ITM_Viewer_Test\STM32G431C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ITM_Viewer_Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: ITM_Viewer_Test.elf
- 
-arm-none-eabi-size  ITM_Viewer_Test.elf 
-arm-none-eabi-objdump -h -S ITM_Viewer_Test.elf  > "ITM_Viewer_Test.list"
-   text	   data	    bss	    dec	    hex	filename
-  10056	    104	   1904	  12064	   2f20	ITM_Viewer_Test.elf
-Finished building: default.size.stdout
- 
-Finished building: ITM_Viewer_Test.list
- 
-13:57:03 **** Incremental Build of configuration Debug for project ITM_Viewer_Test ****
-make -j16 all 
-arm-none-eabi-size  ITM_Viewer_Test.elf 
-   text	   data	    bss	    dec	    hex	filename
-  10056	    104	   1904	  12064	   2f20	ITM_Viewer_Test.elf
-Finished building: default.size.stdout
- 
-13:57:17 **** Incremental Build of configuration Debug for project ITM_Viewer_Test ****
-make -j16 all 
-arm-none-eabi-size  ITM_Viewer_Test.elf 
-   text	   data	    bss	    dec	    hex	filename
-  10056	    104	   1904	  12064	   2f20	ITM_Viewer_Test.elf
-Finished building: default.size.stdout
- 
-14:00:47 **** Incremental Build of configuration Debug for project ITM_Viewer_Test ****
+17:57:21 **** Incremental Build of configuration Debug for project CAN_Loopback_Test ****
 make -j16 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "ITM_Viewer_Test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\wongr\My Stuff\UNSW\Sunswift\projects\ITM_Viewer_Test\STM32G431C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ITM_Viewer_Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: ITM_Viewer_Test.elf
+../Core/Src/main.c: In function 'HAL_FDCAN_RxFifo0Callback':
+../Core/Src/main.c:247:54: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'uint8_t *' {aka 'unsigned char *'} [-Wformat=]
+  247 |         printf("Received from CAN ID: 0x%lX\n Data: %u\n", RxHeader.Identifier, &RxData);
+      |                                                     ~^                          ~~~~~~~
+      |                                                      |                          |
+      |                                                      unsigned int               uint8_t * {aka unsigned char *}
+      |                                                     %hhn
+arm-none-eabi-gcc -o "CAN_Loopback_Test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\wongr\My Stuff\UNSW\Sunswift\projects\CAN_Loopback_Test\STM32G431C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CAN_Loopback_Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CAN_Loopback_Test.elf
  
-arm-none-eabi-size  ITM_Viewer_Test.elf 
-arm-none-eabi-objdump -h -S ITM_Viewer_Test.elf  > "ITM_Viewer_Test.list"
+arm-none-eabi-size  CAN_Loopback_Test.elf 
+arm-none-eabi-objdump -h -S CAN_Loopback_Test.elf  > "CAN_Loopback_Test.list"
    text	   data	    bss	    dec	    hex	filename
-  10068	    104	   1904	  12076	   2f2c	ITM_Viewer_Test.elf
+  14944	    104	   2008	  17056	   42a0	CAN_Loopback_Test.elf
 Finished building: default.size.stdout
  
-Finished building: ITM_Viewer_Test.list
+Finished building: CAN_Loopback_Test.list
  
-14:02:45 **** Incremental Build of configuration Debug for project ITM_Viewer_Test ****
+17:57:24 **** Incremental Build of configuration Debug for project CAN_Loopback_Test ****
+make -j16 all 
+arm-none-eabi-size  CAN_Loopback_Test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14944	    104	   2008	  17056	   42a0	CAN_Loopback_Test.elf
+Finished building: default.size.stdout
+ 
+18:02:55 **** Incremental Build of configuration Debug for project CAN_Loopback_Test ****
 make -j16 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "ITM_Viewer_Test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\wongr\My Stuff\UNSW\Sunswift\projects\ITM_Viewer_Test\STM32G431C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ITM_Viewer_Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: ITM_Viewer_Test.elf
+../Core/Src/main.c: In function 'HAL_FDCAN_RxFifo0Callback':
+../Core/Src/main.c:247:58: warning: format '%X' expects argument of type 'unsigned int', but argument 3 has type 'uint8_t *' {aka 'unsigned char *'} [-Wformat=]
+  247 |         printf("Received from CAN ID: 0x%lX\n Data: 0x%02X\n", RxHeader.Identifier, &RxData);
+      |                                                       ~~~^                          ~~~~~~~
+      |                                                          |                          |
+      |                                                          unsigned int               uint8_t * {aka unsigned char *}
+      |                                                       %02hhn
+arm-none-eabi-gcc -o "CAN_Loopback_Test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\wongr\My Stuff\UNSW\Sunswift\projects\CAN_Loopback_Test\STM32G431C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CAN_Loopback_Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CAN_Loopback_Test.elf
  
-arm-none-eabi-size  ITM_Viewer_Test.elf 
-arm-none-eabi-objdump -h -S ITM_Viewer_Test.elf  > "ITM_Viewer_Test.list"
+arm-none-eabi-size  CAN_Loopback_Test.elf 
+arm-none-eabi-objdump -h -S CAN_Loopback_Test.elf  > "CAN_Loopback_Test.list"
    text	   data	    bss	    dec	    hex	filename
-  10064	    104	   1904	  12072	   2f28	ITM_Viewer_Test.elf
+  14948	    104	   2008	  17060	   42a4	CAN_Loopback_Test.elf
 Finished building: default.size.stdout
  
-Finished building: ITM_Viewer_Test.list
+Finished building: CAN_Loopback_Test.list
+ 
+18:04:54 **** Incremental Build of configuration Debug for project CAN_Loopback_Test ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_FDCAN_RxFifo0Callback':
+../Core/Src/main.c:247:58: warning: format '%X' expects argument of type 'unsigned int', but argument 3 has type 'uint8_t *' {aka 'unsigned char *'} [-Wformat=]
+  247 |         printf("Received from CAN ID: 0x%lX\n Data: 0x%02X\n", RxHeader.Identifier, &RxData);
+      |                                                       ~~~^                          ~~~~~~~
+      |                                                          |                          |
+      |                                                          unsigned int               uint8_t * {aka unsigned char *}
+      |                                                       %02hhn
+arm-none-eabi-gcc -o "CAN_Loopback_Test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\wongr\My Stuff\UNSW\Sunswift\projects\CAN_Loopback_Test\STM32G431C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CAN_Loopback_Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CAN_Loopback_Test.elf
+ 
+arm-none-eabi-size  CAN_Loopback_Test.elf 
+arm-none-eabi-objdump -h -S CAN_Loopback_Test.elf  > "CAN_Loopback_Test.list"
+   text	   data	    bss	    dec	    hex	filename
+  14956	    104	   2008	  17068	   42ac	CAN_Loopback_Test.elf
+Finished building: default.size.stdout
+ 
+Finished building: CAN_Loopback_Test.list
+ 
+18:05:52 **** Incremental Build of configuration Debug for project CAN_Loopback_Test ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "CAN_Loopback_Test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\wongr\My Stuff\UNSW\Sunswift\projects\CAN_Loopback_Test\STM32G431C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CAN_Loopback_Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CAN_Loopback_Test.elf
+ 
+arm-none-eabi-size  CAN_Loopback_Test.elf 
+arm-none-eabi-objdump -h -S CAN_Loopback_Test.elf  > "CAN_Loopback_Test.list"
+   text	   data	    bss	    dec	    hex	filename
+  14944	    104	   2008	  17056	   42a0	CAN_Loopback_Test.elf
+Finished building: default.size.stdout
+ 
+Finished building: CAN_Loopback_Test.list
  

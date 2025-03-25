@@ -1,4 +1,4 @@
-13:36:34 **** Incremental Build of configuration Debug for project Led_PWM_Button ****
+00:28:47 **** Incremental Build of configuration Debug for project Led_PWM_Button ****
 make -j16 all 
 arm-none-eabi-size  Led_PWM_Button.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size  Led_PWM_Button.elf
 Finished building: default.size.stdout
  
 
-13:36:35 Build Finished. 0 errors, 0 warnings. (took 317ms)
+00:28:47 Build Finished. 0 errors, 0 warnings. (took 403ms)
 

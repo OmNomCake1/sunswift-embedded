@@ -43,7 +43,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 UART_HandleTypeDef huart2;
-uint8_t RxData[6] = {0};
+uint8_t RxData;
 
 /* USER CODE BEGIN PV */
 
@@ -93,19 +93,19 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  char RxData[6] = "Hello";
+  uint8_t TxData = 0x08;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   // start listening for UART
-  HAL_UART_Receive_IT(&huart2, RxData, sizeof(RxData));
+  HAL_UART_Receive_IT(&huart2, &RxData, sizeof(RxData));
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  HAL_UART_Transmit(&huart2, RxData, sizeof(RxData), 10);
+	  HAL_UART_Transmit(&huart2, &TxData, sizeof(TxData), HAL_MAX_DELAY);
 	  HAL_Delay(1000);
   }
   /* USER CODE END 3 */
@@ -219,11 +219,11 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 // receive callback function
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef* huart) {
-	printf("Received Message: %s\n", RxData);
+	printf("Received Message: %u\n", RxData);
 	fflush(stdout);
 
 	// restart listening for UART messages
-	HAL_UART_Receive_IT(&huart2, RxData, sizeof(RxData));
+	HAL_UART_Receive_IT(&huart2, &RxData, sizeof(RxData));
 }
 /* USER CODE END 4 */
 

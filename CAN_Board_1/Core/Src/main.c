@@ -283,8 +283,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 	fflush(stdout);
 
 	if (HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan1, &TxHeader, &TxData) != HAL_OK) {
-		// printf("Error adding CAN message to FIFO\n");
+		printf("Error adding CAN message to FIFO\n");
 		uint32_t error = HAL_FDCAN_GetError(&hfdcan1);
+		printf("Error code: 0x%lx\n", error);
 		return;
 	}
 }
@@ -295,6 +296,7 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 
 	if (HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO0, &RxHeader, &RxData) != HAL_OK) {
 		printf("Error receiving CAN message\n");
+		HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
 		return;
 	}
 
@@ -304,6 +306,7 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 	} else {
 		printf("RxHeader ignored (incorrect ID number)\n");
 	}
+	HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
 }
 /* USER CODE END 4 */
 

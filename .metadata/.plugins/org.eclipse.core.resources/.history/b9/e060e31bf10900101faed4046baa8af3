@@ -235,6 +235,7 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 		HAL_FDCAN_AddMessageToTxFifoQ(hfdcan, &TxHeader, &TxData);
 	}
 	HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
+
 }
 /* USER CODE END 4 */
 

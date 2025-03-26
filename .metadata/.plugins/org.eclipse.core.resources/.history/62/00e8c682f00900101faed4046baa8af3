@@ -33,8 +33,9 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define CAN_TX_ID 0x02U
-#define CAN_RX_ID 0x01U
+#define CAN_TX_ID 0x01U
+// only process messages with this ID
+#define CAN_RX_ID 0x02U
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -45,6 +46,8 @@
 /* Private variables ---------------------------------------------------------*/
 FDCAN_HandleTypeDef hfdcan1;
 
+TIM_HandleTypeDef htim2;
+
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -53,6 +56,7 @@ FDCAN_HandleTypeDef hfdcan1;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_FDCAN1_Init(void);
+static void MX_TIM2_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -92,10 +96,13 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_FDCAN1_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-  if(HAL_FDCAN_Start(&hfdcan1) != HAL_OK) {
-	  printf("error in start\n");
+  if (HAL_FDCAN_Start(&hfdcan1) != HAL_OK) {
+      printf("Error starting FDCAN!\n");
+      fflush(stdout);
   }
+  HAL_TIM_Base_Start_IT(&htim2);
   HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
   /* USER CODE END 2 */
 
@@ -103,11 +110,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  // debugging check if anything is even in any RxFIFO
-	  uint32_t fifo0_level = HAL_FDCAN_GetRxFifoFillLevel(&hfdcan1, FDCAN_RX_FIFO0);
-	  printf("Rxfifo0_level = %lu\n", fifo0_level);
-	  uint32_t fifo1_level = HAL_FDCAN_GetRxFifoFillLevel(&hfdcan1, FDCAN_RX_FIFO1);
-	  printf("Rxfifo1_level = %lu\n", fifo1_level);
+    /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }
@@ -187,11 +192,57 @@ static void MX_FDCAN1_Init(void)
   hfdcan1.Init.TxFifoQueueMode = FDCAN_TX_FIFO_OPERATION;
   if (HAL_FDCAN_Init(&hfdcan1) != HAL_OK)
   {
+	  printf("FD CAN init issue\n");
     Error_Handler();
   }
   /* USER CODE BEGIN FDCAN1_Init 2 */
 
   /* USER CODE END FDCAN1_Init 2 */
+
+}
+
+/**
+  * @brief TIM2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM2_Init(void)
+{
+
+  /* USER CODE BEGIN TIM2_Init 0 */
+
+  /* USER CODE END TIM2_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM2_Init 1 */
+
+  /* USER CODE END TIM2_Init 1 */
+  htim2.Instance = TIM2;
+  htim2.Init.Prescaler = 15999;
+  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim2.Init.Period = 999;
+  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM2_Init 2 */
+
+  /* USER CODE END TIM2_Init 2 */
 
 }
 
@@ -213,28 +264,46 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+	// send that CAN message bro
+	FDCAN_TxHeaderTypeDef TxHeader;
+	uint8_t TxData = 0x08;
+
+	TxHeader.Identifier = CAN_TX_ID;
+	TxHeader.IdType = FDCAN_STANDARD_ID;
+	TxHeader.TxFrameType = FDCAN_DATA_FRAME;
+	TxHeader.DataLength = FDCAN_DLC_BYTES_1;
+	TxHeader.BitRateSwitch = FDCAN_BRS_OFF;
+	TxHeader.FDFormat = FDCAN_FD_CAN;
+	TxHeader.TxEventFifoControl = FDCAN_NO_TX_EVENTS;
+	TxHeader.MessageMarker = 0;
+
+	uint32_t free_slots = HAL_FDCAN_GetTxFifoFreeLevel(&hfdcan1);
+	printf("FIFO0 space: %lu\n", free_slots);
+	fflush(stdout);
+
+	if (HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan1, &TxHeader, &TxData) != HAL_OK) {
+		// printf("Error adding CAN message to FIFO\n");
+		uint32_t error = HAL_FDCAN_GetError(&hfdcan1);
+		return;
+	}
+}
+
 void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs) {
 	FDCAN_RxHeaderTypeDef RxHeader;
 	uint8_t RxData;
 
-	FDCAN_TxHeaderTypeDef TxHeader;
-	uint8_t TxData;
-
-	HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO0, &RxHeader, &RxData);
-
-	if (RxHeader.Identifier == CAN_RX_ID && RxData == 0x08) {
-		TxHeader.Identifier = CAN_TX_ID;
-		TxHeader.IdType = FDCAN_STANDARD_ID;
-		TxHeader.TxFrameType = FDCAN_DATA_FRAME;
-		TxHeader.DataLength = FDCAN_DLC_BYTES_1;
-		TxHeader.BitRateSwitch = FDCAN_BRS_OFF;
-		TxHeader.FDFormat = FDCAN_FD_CAN;
-		TxHeader.TxEventFifoControl = FDCAN_NO_TX_EVENTS;
-		TxHeader.MessageMarker = 0;
-
-		HAL_FDCAN_AddMessageToTxFifoQ(hfdcan, &TxHeader, &TxData);
+	if (HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO0, &RxHeader, &RxData) != HAL_OK) {
+		printf("Error receiving CAN message\n");
+		return;
 	}
-	HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
+
+	// show messages
+	if (RxHeader.Identifier == CAN_RX_ID) {
+		printf("Message Received:\nID: %lu\nData: %u\n", RxHeader.Identifier, RxData);
+	} else {
+		printf("RxHeader ignored (incorrect ID number)\n");
+	}
 }
 /* USER CODE END 4 */
 

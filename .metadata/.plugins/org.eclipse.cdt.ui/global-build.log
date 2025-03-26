@@ -1,105 +1,14 @@
-01:00:15 **** Incremental Build of configuration Debug for project CAN_Board_2 ****
+14:16:20 **** Incremental Build of configuration Debug for project CAN_Board_1 ****
 make -j16 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "CAN_Board_2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\wongr\My Stuff\UNSW\Sunswift\projects\CAN_Board_2\STM32G431C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CAN_Board_2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: CAN_Board_2.elf
+arm-none-eabi-gcc -o "CAN_Board_1.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\wongr\My Stuff\UNSW\Sunswift\projects\CAN_Board_1\STM32G431C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CAN_Board_1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CAN_Board_1.elf
  
-arm-none-eabi-size  CAN_Board_2.elf 
-arm-none-eabi-objdump -h -S CAN_Board_2.elf  > "CAN_Board_2.list"
-   text	   data	    bss	    dec	    hex	filename
-  12956	    104	   2008	  15068	   3adc	CAN_Board_2.elf
-Finished building: default.size.stdout
- 
-Finished building: CAN_Board_2.list
- 
-01:00:22 **** Incremental Build of configuration Debug for project CAN_Board_2 ****
-make -j16 all 
-arm-none-eabi-size  CAN_Board_2.elf 
-   text	   data	    bss	    dec	    hex	filename
-  12956	    104	   2008	  15068	   3adc	CAN_Board_2.elf
-Finished building: default.size.stdout
- 
-01:02:04 **** Incremental Build of configuration Debug for project CAN_Board_1 ****
-make -j16 all 
 arm-none-eabi-size  CAN_Board_1.elf 
+arm-none-eabi-objdump -h -S CAN_Board_1.elf  > "CAN_Board_1.list"
    text	   data	    bss	    dec	    hex	filename
-  17964	    104	   2080	  20148	   4eb4	CAN_Board_1.elf
+  18064	    104	   2080	  20248	   4f18	CAN_Board_1.elf
 Finished building: default.size.stdout
  
-01:19:00 **** Incremental Build of configuration Debug for project CAN_Board_2 ****
-make -j16 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "CAN_Board_2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\wongr\My Stuff\UNSW\Sunswift\projects\CAN_Board_2\STM32G431C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CAN_Board_2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: CAN_Board_2.elf
- 
-arm-none-eabi-size  CAN_Board_2.elf 
-arm-none-eabi-objdump -h -S CAN_Board_2.elf  > "CAN_Board_2.list"
-   text	   data	    bss	    dec	    hex	filename
-  12956	    104	   2008	  15068	   3adc	CAN_Board_2.elf
-Finished building: default.size.stdout
- 
-Finished building: CAN_Board_2.list
- 
-01:19:50 **** Incremental Build of configuration Debug for project CAN_Board_1 ****
-make -j16 all 
-arm-none-eabi-size  CAN_Board_1.elf 
-   text	   data	    bss	    dec	    hex	filename
-  17964	    104	   2080	  20148	   4eb4	CAN_Board_1.elf
-Finished building: default.size.stdout
- 
-01:20:03 **** Incremental Build of configuration Debug for project CAN_Board_1 ****
-make -j16 all 
-arm-none-eabi-size  CAN_Board_1.elf 
-   text	   data	    bss	    dec	    hex	filename
-  17964	    104	   2080	  20148	   4eb4	CAN_Board_1.elf
-Finished building: default.size.stdout
- 
-01:23:06 **** Incremental Build of configuration Debug for project CAN_Board_2 ****
-make -j16 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "CAN_Board_2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\wongr\My Stuff\UNSW\Sunswift\projects\CAN_Board_2\STM32G431C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CAN_Board_2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: CAN_Board_2.elf
- 
-arm-none-eabi-size  CAN_Board_2.elf 
-arm-none-eabi-objdump -h -S CAN_Board_2.elf  > "CAN_Board_2.list"
-   text	   data	    bss	    dec	    hex	filename
-  14760	    104	   2008	  16872	   41e8	CAN_Board_2.elf
-Finished building: default.size.stdout
- 
-Finished building: CAN_Board_2.list
- 
-01:23:22 **** Incremental Build of configuration Debug for project CAN_Board_2 ****
-make -j16 all 
-arm-none-eabi-size  CAN_Board_2.elf 
-   text	   data	    bss	    dec	    hex	filename
-  14760	    104	   2008	  16872	   41e8	CAN_Board_2.elf
-Finished building: default.size.stdout
- 
-01:23:59 **** Incremental Build of configuration Debug for project CAN_Board_1 ****
-make -j16 all 
-arm-none-eabi-size  CAN_Board_1.elf 
-   text	   data	    bss	    dec	    hex	filename
-  17964	    104	   2080	  20148	   4eb4	CAN_Board_1.elf
-Finished building: default.size.stdout
- 
-01:24:15 **** Incremental Build of configuration Debug for project CAN_Board_1 ****
-make -j16 all 
-arm-none-eabi-size  CAN_Board_1.elf 
-   text	   data	    bss	    dec	    hex	filename
-  17964	    104	   2080	  20148	   4eb4	CAN_Board_1.elf
-Finished building: default.size.stdout
- 
-01:24:46 **** Incremental Build of configuration Debug for project CAN_Board_2 ****
-make -j16 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "CAN_Board_2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\wongr\My Stuff\UNSW\Sunswift\projects\CAN_Board_2\STM32G431C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CAN_Board_2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: CAN_Board_2.elf
- 
-arm-none-eabi-size  CAN_Board_2.elf 
-arm-none-eabi-objdump -h -S CAN_Board_2.elf  > "CAN_Board_2.list"
-   text	   data	    bss	    dec	    hex	filename
-  14760	    104	   2008	  16872	   41e8	CAN_Board_2.elf
-Finished building: default.size.stdout
- 
-Finished building: CAN_Board_2.list
+Finished building: CAN_Board_1.list
  

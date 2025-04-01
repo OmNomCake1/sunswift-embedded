@@ -33,6 +33,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+// ID of this CAN node
 #define CAN_TX_ID 0x01U
 // only process messages with this ID
 #define CAN_RX_ID 0x02U
@@ -49,7 +50,7 @@ FDCAN_HandleTypeDef hfdcan1;
 TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
-
+//volatile int can_send_flag = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -103,7 +104,10 @@ int main(void)
       fflush(stdout);
   }
   HAL_TIM_Base_Start_IT(&htim2);
-  HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
+  if (HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0) != HAL_OK) {
+	  printf("Error activating notification\n");
+	  fflush(stdout);
+  }
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -192,7 +196,6 @@ static void MX_FDCAN1_Init(void)
   hfdcan1.Init.TxFifoQueueMode = FDCAN_TX_FIFO_OPERATION;
   if (HAL_FDCAN_Init(&hfdcan1) != HAL_OK)
   {
-	  printf("FD CAN init issue\n");
     Error_Handler();
   }
   /* USER CODE BEGIN FDCAN1_Init 2 */
@@ -273,20 +276,16 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 	TxHeader.IdType = FDCAN_STANDARD_ID;
 	TxHeader.TxFrameType = FDCAN_DATA_FRAME;
 	TxHeader.DataLength = FDCAN_DLC_BYTES_1;
+	TxHeader.ErrorStateIndicator = FDCAN_ESI_ACTIVE;
 	TxHeader.BitRateSwitch = FDCAN_BRS_OFF;
 	TxHeader.FDFormat = FDCAN_FD_CAN;
 	TxHeader.TxEventFifoControl = FDCAN_NO_TX_EVENTS;
 	TxHeader.MessageMarker = 0;
 
-	uint32_t free_slots = HAL_FDCAN_GetTxFifoFreeLevel(&hfdcan1);
-	printf("FIFO0 space: %lu\n", free_slots);
-	fflush(stdout);
-
 	if (HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan1, &TxHeader, &TxData) != HAL_OK) {
 		printf("Error adding CAN message to FIFO\n");
 		uint32_t error = HAL_FDCAN_GetError(&hfdcan1);
 		printf("Error code: 0x%lx\n", error);
-		return;
 	}
 }
 
@@ -294,19 +293,26 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 	FDCAN_RxHeaderTypeDef RxHeader;
 	uint8_t RxData;
 
-	if (HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO0, &RxHeader, &RxData) != HAL_OK) {
-		printf("Error receiving CAN message\n");
+	// check if interrupt is due to new message
+	if (RxFifo0ITs & FDCAN_IT_RX_FIFO0_NEW_MESSAGE) {
+		if (HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO0, &RxHeader, &RxData) != HAL_OK) {
+			printf("Error receiving CAN message\n");
+			HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
+			return;
+		}
+
+		// show messages if matches ID I want
+		if (RxHeader.Identifier == CAN_RX_ID) {
+			printf("Message Received:\nID: 0x%lx\nData: 0x%x\n", RxHeader.Identifier, RxData);
+		} else {
+			printf("RxHeader ignored (incorrect ID number): 0x%lx\n", RxHeader.Identifier);
+		}
 		HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
-		return;
+	} else {
+		printf("RxFIFO0 interrupt not due to new message\n");
+		fflush(stdout);
 	}
 
-	// show messages
-	if (RxHeader.Identifier == CAN_RX_ID) {
-		printf("Message Received:\nID: %lu\nData: %u\n", RxHeader.Identifier, RxData);
-	} else {
-		printf("RxHeader ignored (incorrect ID number)\n");
-	}
-	HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
 }
 /* USER CODE END 4 */
 

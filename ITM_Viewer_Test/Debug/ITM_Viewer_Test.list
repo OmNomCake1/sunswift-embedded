@@ -186,8 +186,8 @@ int main(void)
  80002e0:	2b00      	cmp	r3, #0
  80002e2:	d115      	bne.n	8000310 <main+0x50>
 		  // wait 50ms for debounce
-		  HAL_Delay(200);
- 80002e4:	20c8      	movs	r0, #200	@ 0xc8
+		  HAL_Delay(50);
+ 80002e4:	2032      	movs	r0, #50	@ 0x32
  80002e6:	f000 fa6b 	bl	80007c0 <HAL_Delay>
 		  if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0) == GPIO_PIN_RESET) {
  80002ea:	2101      	movs	r1, #1

@@ -1,4 +1,4 @@
-20:22:56 **** Incremental Build of configuration Debug for project UART_To_NucleoF446RE ****
+15:51:15 **** Build of configuration Debug for project UART_To_NucleoF446RE ****
 make -j16 all 
 arm-none-eabi-size  UART_To_NucleoF446RE.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size  UART_To_NucleoF446RE.elf
 Finished building: default.size.stdout
  
 
-20:22:57 Build Finished. 0 errors, 0 warnings. (took 460ms)
+15:51:16 Build Finished. 0 errors, 0 warnings. (took 693ms)
 

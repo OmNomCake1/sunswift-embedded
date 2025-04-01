@@ -1,0 +1,10 @@
+15:40:08 **** Incremental Build of configuration Debug for project Nucleo_I2C_Test ****
+make -j16 all 
+arm-none-eabi-size  Nucleo_I2C_Test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28504	    468	   2060	  31032	   7938	Nucleo_I2C_Test.elf
+Finished building: default.size.stdout
+ 
+
+15:40:08 Build Finished. 0 errors, 0 warnings. (took 386ms)
+

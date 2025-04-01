@@ -1,0 +1,10 @@
+15:51:08 **** Build of configuration Debug for project FD_CAN_BOARD_1 ****
+make -j16 all 
+arm-none-eabi-size  FD_CAN_BOARD_1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13708	    104	   2008	  15820	   3dcc	FD_CAN_BOARD_1.elf
+Finished building: default.size.stdout
+ 
+
+15:51:09 Build Finished. 0 errors, 0 warnings. (took 381ms)
+

@@ -1,0 +1,9 @@
+ToolChainManager/order/0.id=gcc-i686-C\:/CTOOLS/mingw32/bin/gcc.exe
+ToolChainManager/order/0.type=org.eclipse.cdt.build.gcc
+ToolChainManager/order/1.id=gcc-i686-C\:/CTOOLS/mingw32/bin/i686-w64-mingw32-gcc.exe
+ToolChainManager/order/1.type=org.eclipse.cdt.build.gcc
+ToolChainManager/order/2.id=gcc-arm-C\:/ST/STM32CubeIDE_1.16.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623/tools/bin/arm-none-eabi-gcc.exe
+ToolChainManager/order/2.type=org.eclipse.cdt.build.gcc
+ToolChainManager/order/n=3
+eclipse.preferences.version=1
+org.eclipse.cdt.core.showSourceRootsAtTopLevelOfProject=true

@@ -1,0 +1,10 @@
+17:26:14 **** Incremental Build of configuration Debug for project UART_Board_1 ****
+make -j16 all 
+arm-none-eabi-size  UART_Board_1.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16360	    104	   2056	  18520	   4858	UART_Board_1.elf
+Finished building: default.size.stdout
+ 
+
+17:26:15 Build Finished. 0 errors, 0 warnings. (took 391ms)
+

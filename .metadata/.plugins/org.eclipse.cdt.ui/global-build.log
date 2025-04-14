@@ -1,84 +1,67 @@
-01:15:46 **** Incremental Build of configuration Debug for project Internal_Temp_Sensor ****
+00:20:10 **** Incremental Build of configuration Debug for project EXTI_Test ****
 make -j16 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "Internal_Temp_Sensor.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\wongr\My Stuff\UNSW\Sunswift\projects\Internal_Temp_Sensor\STM32G431C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Internal_Temp_Sensor.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Internal_Temp_Sensor.elf
+arm-none-eabi-gcc -o "EXTI_Test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\wongr\My Stuff\UNSW\Sunswift\projects\EXTI_Test\STM32G431C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EXTI_Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: EXTI_Test.elf
  
-arm-none-eabi-size  Internal_Temp_Sensor.elf 
-arm-none-eabi-objdump -h -S Internal_Temp_Sensor.elf  > "Internal_Temp_Sensor.list"
+arm-none-eabi-size  EXTI_Test.elf 
+arm-none-eabi-objdump -h -S EXTI_Test.elf  > "EXTI_Test.list"
    text	   data	    bss	    dec	    hex	filename
-  27868	    468	   2012	  30348	   768c	Internal_Temp_Sensor.elf
+   5888	     12	   1572	   7472	   1d30	EXTI_Test.elf
 Finished building: default.size.stdout
  
-Finished building: Internal_Temp_Sensor.list
+Finished building: EXTI_Test.list
  
-01:15:49 **** Incremental Build of configuration Debug for project Internal_Temp_Sensor ****
+00:30:40 **** Incremental Build of configuration Debug for project EXTI_Test ****
 make -j16 all 
-arm-none-eabi-size  Internal_Temp_Sensor.elf 
+arm-none-eabi-size  EXTI_Test.elf 
    text	   data	    bss	    dec	    hex	filename
-  27868	    468	   2012	  30348	   768c	Internal_Temp_Sensor.elf
+   5888	     12	   1572	   7472	   1d30	EXTI_Test.elf
 Finished building: default.size.stdout
  
-01:16:03 **** Incremental Build of configuration Debug for project Internal_Temp_Sensor ****
+00:31:54 **** Incremental Build of configuration Debug for project EXTI_Test ****
 make -j16 all 
-arm-none-eabi-size  Internal_Temp_Sensor.elf 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_GPIO_EXTI_Callback':
+../Core/Src/main.c:188:26: warning: unused variable 'now' [-Wunused-variable]
+  188 |                 uint32_t now = HAL_GetTick();
+      |                          ^~~
+arm-none-eabi-gcc -o "EXTI_Test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\wongr\My Stuff\UNSW\Sunswift\projects\EXTI_Test\STM32G431C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EXTI_Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: EXTI_Test.elf
+ 
+arm-none-eabi-size  EXTI_Test.elf 
+arm-none-eabi-objdump -h -S EXTI_Test.elf  > "EXTI_Test.list"
    text	   data	    bss	    dec	    hex	filename
-  27868	    468	   2012	  30348	   768c	Internal_Temp_Sensor.elf
+   5868	     12	   1572	   7452	   1d1c	EXTI_Test.elf
 Finished building: default.size.stdout
  
-01:16:14 **** Incremental Build of configuration Debug for project Internal_Temp_Sensor ****
+Finished building: EXTI_Test.list
+ 
+00:33:16 **** Incremental Build of configuration Debug for project EXTI_Test ****
 make -j16 all 
-arm-none-eabi-size  Internal_Temp_Sensor.elf 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "EXTI_Test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\wongr\My Stuff\UNSW\Sunswift\projects\EXTI_Test\STM32G431C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EXTI_Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: EXTI_Test.elf
+ 
+arm-none-eabi-size  EXTI_Test.elf 
+arm-none-eabi-objdump -h -S EXTI_Test.elf  > "EXTI_Test.list"
    text	   data	    bss	    dec	    hex	filename
-  27868	    468	   2012	  30348	   768c	Internal_Temp_Sensor.elf
+   5888	     12	   1572	   7472	   1d30	EXTI_Test.elf
 Finished building: default.size.stdout
  
-01:16:37 **** Incremental Build of configuration Debug for project Internal_Temp_Sensor ****
+Finished building: EXTI_Test.list
+ 
+00:35:53 **** Incremental Build of configuration Debug for project EXTI_Test ****
 make -j16 all 
-arm-none-eabi-size  Internal_Temp_Sensor.elf 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "EXTI_Test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\wongr\My Stuff\UNSW\Sunswift\projects\EXTI_Test\STM32G431C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EXTI_Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: EXTI_Test.elf
+ 
+arm-none-eabi-size  EXTI_Test.elf 
+arm-none-eabi-objdump -h -S EXTI_Test.elf  > "EXTI_Test.list"
    text	   data	    bss	    dec	    hex	filename
-  27868	    468	   2012	  30348	   768c	Internal_Temp_Sensor.elf
+   5888	     12	   1572	   7472	   1d30	EXTI_Test.elf
 Finished building: default.size.stdout
  
-01:20:41 **** Incremental Build of configuration Debug for project Internal_Temp_Sensor ****
-make -j16 all 
-arm-none-eabi-size  Internal_Temp_Sensor.elf 
-   text	   data	    bss	    dec	    hex	filename
-  27868	    468	   2012	  30348	   768c	Internal_Temp_Sensor.elf
-Finished building: default.size.stdout
- 
-01:21:03 **** Incremental Build of configuration Debug for project Internal_Temp_Sensor ****
-make -j16 all 
-arm-none-eabi-size  Internal_Temp_Sensor.elf 
-   text	   data	    bss	    dec	    hex	filename
-  27868	    468	   2012	  30348	   768c	Internal_Temp_Sensor.elf
-Finished building: default.size.stdout
- 
-01:21:29 **** Incremental Build of configuration Debug for project Internal_Temp_Sensor ****
-make -j16 all 
-arm-none-eabi-size  Internal_Temp_Sensor.elf 
-   text	   data	    bss	    dec	    hex	filename
-  27868	    468	   2012	  30348	   768c	Internal_Temp_Sensor.elf
-Finished building: default.size.stdout
- 
-01:21:47 **** Incremental Build of configuration Debug for project Internal_Temp_Sensor ****
-make -j16 all 
-arm-none-eabi-size  Internal_Temp_Sensor.elf 
-   text	   data	    bss	    dec	    hex	filename
-  27868	    468	   2012	  30348	   768c	Internal_Temp_Sensor.elf
-Finished building: default.size.stdout
- 
-01:22:35 **** Incremental Build of configuration Debug for project Internal_Temp_Sensor ****
-make -j16 all 
-arm-none-eabi-size  Internal_Temp_Sensor.elf 
-   text	   data	    bss	    dec	    hex	filename
-  27868	    468	   2012	  30348	   768c	Internal_Temp_Sensor.elf
-Finished building: default.size.stdout
- 
-01:24:48 **** Incremental Build of configuration Debug for project Internal_Temp_Sensor ****
-make -j16 all 
-arm-none-eabi-size  Internal_Temp_Sensor.elf 
-   text	   data	    bss	    dec	    hex	filename
-  27868	    468	   2012	  30348	   768c	Internal_Temp_Sensor.elf
-Finished building: default.size.stdout
+Finished building: EXTI_Test.list
  

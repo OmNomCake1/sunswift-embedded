@@ -1,35 +1,21 @@
-01:33:46 **** Incremental Build of configuration Debug for project Rotary_Encoder_No_Timer ****
+18:00:54 **** Incremental Build of configuration Debug for project Nucleo_Encoder_With_Timer ****
 make -j16 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "Rotary_Encoder_No_Timer.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\wongr\My Stuff\UNSW\Sunswift\projects\Rotary_Encoder_No_Timer\STM32G431C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Rotary_Encoder_No_Timer.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Rotary_Encoder_No_Timer.elf
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Nucleo_Encoder_With_Timer.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\wongr\My Stuff\UNSW\Sunswift\projects\Nucleo_Encoder_With_Timer\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Nucleo_Encoder_With_Timer.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Nucleo_Encoder_With_Timer.elf
  
-arm-none-eabi-size  Rotary_Encoder_No_Timer.elf 
-arm-none-eabi-objdump -h -S Rotary_Encoder_No_Timer.elf  > "Rotary_Encoder_No_Timer.list"
+arm-none-eabi-size  Nucleo_Encoder_With_Timer.elf 
+arm-none-eabi-objdump -h -S Nucleo_Encoder_With_Timer.elf  > "Nucleo_Encoder_With_Timer.list"
    text	   data	    bss	    dec	    hex	filename
-  10160	    104	   1912	  12176	   2f90	Rotary_Encoder_No_Timer.elf
+  14748	    104	   2048	  16900	   4204	Nucleo_Encoder_With_Timer.elf
 Finished building: default.size.stdout
  
-Finished building: Rotary_Encoder_No_Timer.list
+Finished building: Nucleo_Encoder_With_Timer.list
  
-01:33:49 **** Incremental Build of configuration Debug for project Rotary_Encoder_No_Timer ****
+18:00:57 **** Incremental Build of configuration Debug for project Nucleo_Encoder_With_Timer ****
 make -j16 all 
-arm-none-eabi-size  Rotary_Encoder_No_Timer.elf 
+arm-none-eabi-size  Nucleo_Encoder_With_Timer.elf 
    text	   data	    bss	    dec	    hex	filename
-  10160	    104	   1912	  12176	   2f90	Rotary_Encoder_No_Timer.elf
+  14748	    104	   2048	  16900	   4204	Nucleo_Encoder_With_Timer.elf
 Finished building: default.size.stdout
- 
-01:37:12 **** Incremental Build of configuration Debug for project Rotary_Encoder_No_Timer ****
-make -j16 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G431xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "Rotary_Encoder_No_Timer.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\wongr\My Stuff\UNSW\Sunswift\projects\Rotary_Encoder_No_Timer\STM32G431C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Rotary_Encoder_No_Timer.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Rotary_Encoder_No_Timer.elf
- 
-arm-none-eabi-size  Rotary_Encoder_No_Timer.elf 
-arm-none-eabi-objdump -h -S Rotary_Encoder_No_Timer.elf  > "Rotary_Encoder_No_Timer.list"
-   text	   data	    bss	    dec	    hex	filename
-   8664	    104	   1912	  10680	   29b8	Rotary_Encoder_No_Timer.elf
-Finished building: default.size.stdout
- 
-Finished building: Rotary_Encoder_No_Timer.list
  

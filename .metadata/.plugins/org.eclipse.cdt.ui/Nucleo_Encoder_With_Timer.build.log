@@ -1,0 +1,10 @@
+18:00:57 **** Incremental Build of configuration Debug for project Nucleo_Encoder_With_Timer ****
+make -j16 all 
+arm-none-eabi-size  Nucleo_Encoder_With_Timer.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14748	    104	   2048	  16900	   4204	Nucleo_Encoder_With_Timer.elf
+Finished building: default.size.stdout
+ 
+
+18:00:57 Build Finished. 0 errors, 0 warnings. (took 394ms)
+

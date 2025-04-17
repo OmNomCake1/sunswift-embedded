@@ -5,13 +5,15 @@
 		<item key="DIALOG_Y_ORIGIN" value="302"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Error"/>
+		<item key="selection" value=""/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="Channel"/>
+			<item value="htim4"/>
 			<item value="error"/>
 			<item value="0x3"/>
 			<item value="0x300"/>
@@ -25,8 +27,6 @@
 			<item value="15"/>
 			<item value="HAL_UART_RxCplt"/>
 			<item value="HAL_UART_Rx"/>
-			<item value="HAL_UART"/>
-			<item value="Rx"/>
 		</list>
 		<list key="replacehistory">
 		</list>
